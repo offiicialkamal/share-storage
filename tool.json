@@ -1,0 +1,13 @@
+{
+  "name": "share-storage",
+  "url": "https://github.com/offiicialkamal/share-storage.git",
+  "update": {
+    "auto": true,
+    "force": true
+  },
+  "author": {
+    "name": "Kamal Yadav",
+    "github": "offiicialkamal",
+    "email": "offiicialkamal@gmail.com"
+  }
+}

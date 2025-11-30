@@ -1,0 +1,11 @@
+{
+  "logo": {
+    "text": "KAMAL",
+    "font": "random",
+    "color": {
+      "delay": 1,
+      "color": "random",
+      "random_color_each_line": true
+    }
+  }
+}
