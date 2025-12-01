@@ -1,6 +1,6 @@
 import time
 
-def show(*args, delay: int):
+def show(*args, delay: int = 1/40):
     """"this function prints the provided data 
     it takes two arguments, one is *args and one more delay
     delay is an keyword argumet """

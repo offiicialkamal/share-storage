@@ -3,6 +3,8 @@ import time
 import subprocess
 from customs import show
 from file_handlers import read_text
+from customs import show
+from global_constants import ALTERNATE_LOGO_PATH
 
 # cat /etc/os-release it works on all systems
 
@@ -23,14 +25,14 @@ cloudflared_install = {
 }
 
 
-
-
 class cloudflared:
     def __init__():
         pass
     
     def mac():
         os.system()
+
+
 class security:
     def __init__(self):
         pass
@@ -49,8 +51,9 @@ class security:
             subprocess.run(["pip", "install", "-r", "requirements.txt"])
         except Exception as e:
             print(e)
-            time.sleep(2)
-            show("their was an error please select one of following")
-        
-    def clear():
+            
+    def clear(self):
         os.system("clear")
+
+    
+    
