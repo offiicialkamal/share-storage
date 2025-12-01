@@ -1,4 +1,8 @@
 {
+  "update": {
+    "auto": true,
+    "force": true
+  },
   "logo": {
     "text": "KAMAL",
     "font": "random",

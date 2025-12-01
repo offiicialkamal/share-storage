@@ -1,10 +1,7 @@
 {
   "name": "share-storage",
+  "versoion": 1.0.0,
   "url": "https://github.com/offiicialkamal/share-storage.git",
-  "update": {
-    "auto": true,
-    "force": true
-  },
   "author": {
     "name": "Kamal Yadav",
     "github": "offiicialkamal",

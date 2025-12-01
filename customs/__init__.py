@@ -1,0 +1,1 @@
+from .cprint import show

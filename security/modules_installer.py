@@ -1,0 +1,56 @@
+import os
+import time
+import subprocess
+from customs import show
+from file_handlers import read_text
+
+# cat /etc/os-release it works on all systems
+
+cloudflared_install = {
+    "windows": "winget install Cloudflare.cloudflared",
+    "macos": "brew install cloudflared",
+    "debian": "sudo apt install cloudflared",
+    "ubuntu": "sudo apt install cloudflared",
+    "arch": "sudo pacman -S cloudflared",
+    "fedora": "sudo dnf install cloudflared",
+    "redhat": "sudo dnf install cloudflared",
+    "alpine": "apk add cloudflared",
+    "generic_linux_binary": (
+        "curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/"
+        "cloudflared-linux-amd64 -o cloudflared && "
+        "chmod +x cloudflared && sudo mv cloudflared /usr/local/bin/"
+    ),
+}
+
+
+
+
+class cloudflared:
+    def __init__():
+        pass
+    
+    def mac():
+        os.system()
+class security:
+    def __init__(self):
+        pass
+    
+    def check(self):
+        try:
+            for module in read_text().splitlines():
+                os.system(f"import {module}")
+        except Exception as e:
+            self.install()
+
+    def install(self):
+        try:
+            # for module in read_text().splitlines():
+            #     os.system(f"pip install {module}")
+            subprocess.run(["pip", "install", "-r", "requirements.txt"])
+        except Exception as e:
+            print(e)
+            time.sleep(2)
+            show("their was an error please select one of following")
+        
+    def clear():
+        os.system("clear")
