@@ -1,5 +1,6 @@
 import os
 import time
+import importlib
 import subprocess
 from customs import show
 from file_handlers import read_text
@@ -24,24 +25,29 @@ cloudflared_install = {
     ),
 }
 
-
 class cloudflared:
+    """"verifies the installations of cloudeflared module"""
     def __init__():
         pass
     
     def mac():
         os.system()
 
-
 class security:
-    def __init__(self):
-        pass
+    """ Verifies the installlations of all the python pip packages listed in the requirements.txt file"""
+    def __init__(self, requirements_file):
+        self.__requirements_file = requirements_file
     
     def check(self):
         try:
-            for module in read_text().splitlines():
-                os.system(f"import {module}")
+            # import the all python packages listed inside the requirements file
+            for module in read_text(self.__requirements_file).splitlines():
+                module_name = module.split("=")[0]
+                globals()[module_name] = importlib.import_module(module_name)
+                # globals()["cloudflared"] = importlib.import_module("cloudflared")
+                # print("all modules installed sucessfully")
         except Exception as e:
+            print("modules aare missing ", e)
             self.install()
 
     def install(self):
@@ -54,6 +60,3 @@ class security:
             
     def clear(self):
         os.system("clear")
-
-    
-    

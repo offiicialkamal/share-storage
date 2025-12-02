@@ -1,7 +1,7 @@
 import time
 from file_handlers import read_text
 from customs import show
-from global_constants import ALTERNATE_LOGO_PATH, 
+from global_constants import ALTERNATE_LOGO_PATH
 
 class alternate_option():
     def __init__(self):

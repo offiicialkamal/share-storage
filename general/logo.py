@@ -1,29 +1,30 @@
-from art import text2art
-import random
 import time
+import random
+from art import text2art
+from file_handlers import read_json
+from customs import show
 
 class logo:
-    def __init__(self, colors, logo_settings):
-        self.__colors = colors
-        self.__logo_settings = logo_settings.get("logo")
+    def __init__(self, colors_file_path : str, settings_file_path : str):
+        self.__colors = read_json(colors_file_path)
+        self.__logo_settings = read_json(settings_file_path).get("logo")
         self.__font = self.__logo_settings.get("font")
 
     def get_color(self):
-        if self.__logo_settings.get("color")
-        color = self.__colors.get(random.choice(self.__colors))
+        color = ""
+        if self.__logo_settings.get("color"):
+            color = self.__colors.get(random.choice(self.__colors))
         return color
 
     def generate_logo(self, s=None):
         art = text2art(s, self.__font) if s else text2art(self.__logo_settings.get("text"), self.__font)
         return art
 
-    def print_logo(self, banner: str):
-        lines = banner.splitlines()
+    def print_logo(self, banner = None):
+        lines = banner.splitlines() if banner else self.generate_logo().splitlines()
         for line in lines:
-            for ch in line:
-                print(ch, end="")
-                time.sleep(self.__delay/35)
-            print()
+            color = self.get_color()
+            show(color + line)
         return True
 
 # a = logo()

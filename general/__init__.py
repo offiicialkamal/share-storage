@@ -1,1 +1,1 @@
-from logo import logo
+from .logo import logo
