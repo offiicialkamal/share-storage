@@ -13,7 +13,8 @@ class logo:
     def get_color(self):
         color = ""
         if self.__logo_settings.get("color"):
-            color = self.__colors.get(random.choice(self.__colors))
+            # print(type(self.__colors))
+            color = self.__colors.get(random.choice(list(self.__colors.keys())))
         return color
 
     def generate_logo(self, s=None):
@@ -21,11 +22,45 @@ class logo:
         return art
 
     def print_logo(self, banner = None):
+        lenth = None
         lines = banner.splitlines() if banner else self.generate_logo().splitlines()
         for line in lines:
+            if not lenth:
+                lenth = len(line)
+                print("<< " + "=" * lenth + " >>")
+            lenth = len(line)
             color = self.get_color()
-            show(color + line)
-        return True
+            show(color + "   " + line)
+        # print()
+        # print("=" * lenth)
+        # print("=" * lenth)
+
+        return lenth
 
 # a = logo()
 # a.print_logo(a.generate_logo("kamal"))
+
+
+[
+    [
+    [
+        [1,2],
+        [1,2]
+    ],
+     [
+        [1,2],
+        [1,2]
+    ]
+],
+[
+    [
+        [1,2],
+        [1,2]
+    ],
+     [
+        [1,2],
+        [1,2]
+    ]
+]
+]
+
