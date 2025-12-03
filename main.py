@@ -1,5 +1,8 @@
 import os
 import time
+import sys
+import webbrowser as wb
+from core import main_thread
 from global_constants import *
 from general import logo as L
 from security import security as S
@@ -22,6 +25,7 @@ class share:
             print("02 LOCAL LINK")
             print("03 DOCUMENTATION")
             print("04 SEE SOURCE CODE")
+            print("05 Exit")
             print("<< " + "=" * lenth + " >>")
             choice = int(input("Enter Your Choice : "))
             print("<< " + "=" * lenth + " >>")
@@ -31,13 +35,16 @@ class share:
             time.sleep(3)
             self.start()
     
-    def run_choice(choice: int):
+    def run_choice(self, choice: int):
         if choice == 1:
             pass
         elif choice == 2:
-            pass
-        else:
-            pass
+            main_thread().start()
+
+        elif choice == 3:wb.open("https://github.com/offiicialkamal/share-storage/blob/main/readme.md")
+        elif choice == 4:wb.open("https://github.com/offiicialkamal/share-storage.git")
+        elif choice == 5:sys.exit()
+        else:print("\nFollow us on github");time.sleep(2);wb.open("https://github.com/offiicialkamal")
 
     def clear(self):
         os.system('clear')
