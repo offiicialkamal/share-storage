@@ -6,6 +6,7 @@ from customs import show
 from file_handlers import read_text
 from customs import show
 from global_constants import ALTERNATE_LOGO_PATH
+from .cloudFlare_installer import cloudeflared_installer as cloudFlared
 
 # cat /etc/os-release it works on all systems
 
@@ -46,6 +47,10 @@ class security:
                 globals()[module_name] = importlib.import_module(module_name)
                 # globals()["cloudflared"] = importlib.import_module("cloudflared")
                 # print("all modules installed sucessfully")
+            ## means all mdules are avilable
+            ## now check the cloudflared
+            cloudFlared().ensure_cloudflared_binary_and_set_path_to_global()
+            
         except Exception as e:
             print("modules aare missing ", e)
             self.install()

@@ -1,8 +1,9 @@
 import os
 import time
 import sys
+from threading import Thread
 import webbrowser as wb
-from core import main_thread
+from core import main_thread, secondary_thread
 from global_constants import *
 from general import logo as L
 from security import security as S
@@ -37,10 +38,9 @@ class share:
     
     def run_choice(self, choice: int):
         if choice == 1:
-            pass
-        elif choice == 2:
             main_thread().start()
-
+            secondary_thread(BINARY_PATH[0], LOCAL_PORT[0]).start()
+        elif choice == 2:main_thread().start()
         elif choice == 3:wb.open("https://github.com/offiicialkamal/share-storage/blob/main/readme.md")
         elif choice == 4:wb.open("https://github.com/offiicialkamal/share-storage.git")
         elif choice == 5:sys.exit()
