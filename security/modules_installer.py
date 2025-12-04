@@ -6,7 +6,7 @@ from customs import show
 from file_handlers import read_text
 from customs import show
 from global_constants import ALTERNATE_LOGO_PATH
-from .cloudFlare_installer import cloudeflared_installer as cloudFlared
+from .cloudFlare_installer import CloudflaredInstaller as cloudFlared
 
 # cat /etc/os-release it works on all systems
 
@@ -26,13 +26,6 @@ cloudflared_install = {
     ),
 }
 
-class cloudflared:
-    """"verifies the installations of cloudeflared module"""
-    def __init__():
-        pass
-    
-    def mac():
-        os.system()
 
 class security:
     """ Verifies the installlations of all the python pip packages listed in the requirements.txt file"""
@@ -60,6 +53,7 @@ class security:
             # for module in read_text().splitlines():
             #     os.system(f"pip install {module}")
             subprocess.run(["pip", "install", "-r", "requirements.txt"])
+            os.system("clear")
         except Exception as e:
             print(e)
             

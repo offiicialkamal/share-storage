@@ -5,6 +5,10 @@ import requests
 import subprocess
 import signal
 import threading
+import re
+import webbrowser
+from customs import show
+import time
 
 class secondary_thread(threading.Thread):
     daemon = True
@@ -30,7 +34,7 @@ class secondary_thread(threading.Thread):
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=False,
-            bufsize=1
+
         )
 
         t1 = threading.Thread(
@@ -55,23 +59,24 @@ class secondary_thread(threading.Thread):
 
     def on_stdout(self, line):
         pass
+        # print(line)
 
-    def on_stderr(self, line):
-        pass
+    def on_stderr(self, line: bytes):
+        line = line.decode(encoding="utf8", errors="ignore").strip()
+        pattern = r"^.*https://.*\.trycloudflare\.com.*$"
+        link = re.match(pattern, line)
+        # print(link)
+        # print(f"{link}  ( + )  {line}  LINE ENDS HEAR")
+        if link:
+            link = link[0].split()[-2]
+            show(f"Global Server accessible at: \033[1;33;41m {link} \033[0m")
+            show("trying to auto open the link")
+            show("=" * os.get_terminal_size()[0])
+            time.sleep(3)
+            webbrowser.open(link)
+            show("still not opend ? please copy the provided link")
+            show("=" * os.get_terminal_size()[0])
+            
 
+ 
 
-
-
-# # Main execution logic
-# if __name__ == "__main__":
-#     # You will need to install 'requests' first: pip install requests
-#     try:
-#         # 1. Ensure the binary is present/downloaded
-#         cf_binary_path = ensure_cloudflared_binary()
-        
-#         # 2. Run the tunnel using the downloaded binary
-#         run_tunnel(cf_binary_path, local_url="http://localhost:8000")
-
-#     except Exception as e:
-#         print(f"An error occurred: {e}")
-#         sys.exit(1)

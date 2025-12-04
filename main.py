@@ -38,8 +38,11 @@ class share:
     
     def run_choice(self, choice: int):
         if choice == 1:
-            main_thread().start()
-            secondary_thread(BINARY_PATH[0], LOCAL_PORT[0]).start()
+            p1 = main_thread()
+            p2 = secondary_thread(BINARY_PATH[0], LOCAL_PORT[0])
+            p1.start()
+            p2.start()
+            time.sleep(5)
         elif choice == 2:main_thread().start()
         elif choice == 3:wb.open("https://github.com/offiicialkamal/share-storage/blob/main/readme.md")
         elif choice == 4:wb.open("https://github.com/offiicialkamal/share-storage.git")
