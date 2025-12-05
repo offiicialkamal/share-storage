@@ -18,10 +18,10 @@ class logo:
         return color
 
     def generate_logo(self, s=None):
-        art = text2art(s, self.__font) if s else text2art(self.__logo_settings.get("text"), self.__font)
+        art = text2art(s, self.__font) if s else text2art(self.__logo_settings.get("main"), self.__font)
         return art
 
-    def print_logo(self, banner = None):
+    def print_logo(self, banner = None) -> int:
         lenth = None
         lines = banner.splitlines() if banner else self.generate_logo().splitlines()
         for line in lines:

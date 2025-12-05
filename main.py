@@ -14,6 +14,7 @@ class share:
 
     def start(self):
         self.clear()
+        
         S(REQUITRTEMENTS_FILE).check() # verify the installations of omodules listed in "requirements.txt"
         lenth = L(COLORS_FILE, SETTINGS_FILE).print_logo() # # show the logo
         
