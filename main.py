@@ -7,27 +7,28 @@ from core import main_thread, secondary_thread
 from global_constants import *
 from general import logo as L
 from security import security as S
+from updater import updates
 
 class share:
     def __init__(self):
         pass
 
     def start(self):
-        self.clear()
-        
         S(REQUITRTEMENTS_FILE).check() # verify the installations of omodules listed in "requirements.txt"
+        updates().check()
+        self.clear()
         lenth = L(COLORS_FILE, SETTINGS_FILE).print_logo() # # show the logo
         
         self.run_choice(self.get_choice(lenth))
 
     def get_choice(self, lenth):
         try:
-            print("<< " + "=" * lenth + " >>")
-            print("01 UBIVERSAL LINK")
-            print("02 LOCAL LINK")
-            print("03 DOCUMENTATION")
-            print("04 SEE SOURCE CODE")
-            print("05 Exit")
+            # print("<< " + "=" * lenth + " >>")
+            print("   01 UBIVERSAL LINK")
+            print("   02 LOCAL LINK")
+            print("   03 DOCUMENTATION")
+            print("   04 SEE SOURCE CODE")
+            print("   05 Exit")
             print("<< " + "=" * lenth + " >>")
             choice = int(input("Enter Your Choice : "))
             print("<< " + "=" * lenth + " >>")

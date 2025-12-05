@@ -4,37 +4,43 @@ import requests
 from general import logo as L
 from global_constants import *
 from file_handlers import read_json
+from customs import show
+import webbrowser as wb
+import sys
+import time
 
-
-
-class updator:
+class updates:
     def __init__(self):
         self.__logo_width = 0
         self.__global_settings = None
         self.__global_url = "https://raw.githubusercontent.com/offiicialkamal/share-storage/refs/heads/main/"
 
-
-
-
     def check(self):
-        self.__global_settings = self.get_global_settings(self.__global_url + "essensials/settings.json")
-        
-        if not (self.get_local_version() == self.get_global_version()):
-            if not self.__global_settings:
-                return
-            else:
-                update_settings = self.__global_settings.get("update")
-                force_updates, auto_update_suggetion = update_settings.values() 
-                
-                if auto_update_suggetion:
-                    self.show_update_logo()
-                    self.show_options()
-                    self.handle_choice(self.get_choice())
+        # self.__global_settings = self.get_global_version(self.__global_url + "essensials/settings.json")
+        self.__global_settings = self.get_global_file(self.__global_url + "essensials/settings.json")
+        self.__global_version = self.get_global_version()
+        local_version = self.get_local_version()
 
-                elif force_updates:
-                    self.update()
-        else:
-            return
+        print("if statement executed")
+        print(self.__global_settings)
+        print(self.__global_version)
+        print(local_version)
+        
+        if not self.__global_settings:return
+        if not local_version == self.__global_version:
+            print(self.__global_settings)
+            update_settings = self.__global_settings.get("update")
+            print(update_settings)
+            auto_update_suggetion, force_updates = update_settings.values()
+            
+            if force_updates:self.update()
+            elif auto_update_suggetion:
+                self.show_update_logo()
+                self.show_options()
+                choice = self.get_choice()
+                if choice:self.handle_choice(choice)
+            else:sys.exit()
+        else:return
         
     def update(self):
         pass
@@ -44,33 +50,44 @@ class updator:
         logo_class = L(COLORS_FILE, SETTINGS_FILE)
         logo = logo_class.generate_logo("UPDATE") 
         self.__logo_width = logo_class.print_logo(logo)
-        
+        time.sleep(3)
 
-    def show_options():
-        pass
+    def show_options(self):
+        print("   01 UPDATE")
+        print("   02 WHATS NEW")
+        print("   03 UPDATE LATER")
+        print("   04 SEE SOURCE CODE")
+        print("   05 Exit")
+        print("<< " + "=" * self.__logo_width + " >>")
 
     def get_choice(self):
-        pass
+        try:
+            choice = int(input("ENTER YOUR CHOICR : "))
+            return choice
+        except Exception as _:
+            show("please choose an valid option ")
+            time.sleep()
+            self.show_update_logo()
 
-    def handle_choice(self):
-        pass
+    def handle_choice(self, choice):
+        if choice == 1:self.update()
+        elif choice == 2:wb.open(self.__global_url+"changelogs.md")
+        elif choice == 3:return
+        elif choice == 4:wb.open("https://github.com/offiicialkamal/share-storage.git")
+        elif choice == 5:sys.exit()
     
     def get_global_file(self, url, silent = True):
         try:
-            return requests.get(url).json
+            return requests.get(url).json()
         except Exception as e:
             if not silent: print(e)
             return None
 
     def get_global_version(self):
         global_version = None
-        content = self.get_global_file(self.__global_url + "tool.json").json
-        if content:global_version = content.get("version")
-        return global_version
+        return self.get_global_file(self.__global_url + "tool.json").get("version")
     
     def get_local_version(self):
         local_file_url = HOME_DIR + "tool.json"
-        content = read_json(local_file_url)
-        if content:local_version = content.get("version")
-        return local_version
+        return read_json(local_file_url).get("version")
 

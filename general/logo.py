@@ -31,6 +31,7 @@ class logo:
             lenth = len(line)
             color = self.get_color()
             show(color + "   " + line)
+        print("<< " + "=" * lenth + " >>")
         # print()
         # print("=" * lenth)
         # print("=" * lenth)
@@ -40,27 +41,4 @@ class logo:
 # a = logo()
 # a.print_logo(a.generate_logo("kamal"))
 
-
-[
-    [
-    [
-        [1,2],
-        [1,2]
-    ],
-     [
-        [1,2],
-        [1,2]
-    ]
-],
-[
-    [
-        [1,2],
-        [1,2]
-    ],
-     [
-        [1,2],
-        [1,2]
-    ]
-]
-]
 
