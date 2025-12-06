@@ -1,5 +1,6 @@
 import os
 import json
+import subprocess
 import requests
 from general import logo as L
 from global_constants import *
@@ -8,6 +9,7 @@ from customs import show
 import webbrowser as wb
 import sys
 import time
+import re
 
 class updates:
     def __init__(self):
@@ -27,6 +29,7 @@ class updates:
         print(local_version)
         
         if not self.__global_settings:return
+        
         if not local_version == self.__global_version:
             print(self.__global_settings)
             update_settings = self.__global_settings.get("update")
@@ -43,7 +46,15 @@ class updates:
         else:return
         
     def update(self):
-        pass
+        # imlement the update process hear
+        show(" UPDATE IS IN PROGRESS PLEASE WAIT FOR SOME ")
+        r = str(subprocess.run(["git", "-version"], text=True, capture_output=True))
+        pattern = r"^git version \d+\.\d+\.\d+.*\n?$"
+
+        is_installed = True if re.match(pattern, r) else False
+        if is_installed:os.system("git pull")
+        else: print("YOU DON'T HAVE GIT INSTALLED PLEASE INSTALL THE GIT TO UPDATE THE TOOL")
+        sys.exit()
 
     def show_update_logo(self):
         os.system("clear")
@@ -66,12 +77,11 @@ class updates:
             return choice
         except Exception as _:
             show("please choose an valid option ")
-            time.sleep()
             self.show_update_logo()
 
     def handle_choice(self, choice):
         if choice == 1:self.update()
-        elif choice == 2:wb.open(self.__global_url+"changelogs.md")
+        elif choice == 2:wb.open("https://github.com/offiicialkamal/share-storage/blob/main/changelogs.md")
         elif choice == 3:return
         elif choice == 4:wb.open("https://github.com/offiicialkamal/share-storage.git")
         elif choice == 5:sys.exit()

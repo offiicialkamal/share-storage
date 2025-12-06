@@ -24,7 +24,7 @@ class share:
     def get_choice(self, lenth):
         try:
             # print("<< " + "=" * lenth + " >>")
-            print("   01 UBIVERSAL LINK")
+            print("   01 UNIVERSAL LINK")
             print("   02 LOCAL LINK")
             print("   03 DOCUMENTATION")
             print("   04 SEE SOURCE CODE")
