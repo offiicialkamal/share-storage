@@ -14,7 +14,7 @@ This tool is designed for shairing files directly from your devices, very healpf
 
 
 ## License & Partiality
-The Project is released under <a href="https://github.com/offiicialkamal/share-storage/blob/main/LICENCE">"MIT Licence </a> and fully <a href="https://github.com/offiicialkamal/share-storage">Open-Source</a>
+The Project is released under <a href="https://github.com/offiicialkamal/share-storage/blob/main/LICENSE">"MIT Licence </a> and fully <a href="https://github.com/offiicialkamal/share-storage">Open-Source</a>
 
 ## Features
 
@@ -84,7 +84,7 @@ the tool usage multiple third party libraries so such as -
 - In one word: **Welcome!**
 - If you're a developer who wants to contribute or improve the project, remember: **“small steps make a big difference.”** I truly appreciate any kind of contribution you can offer
 
-> [!INFO]
+> [!Note]
 > I always appreciate a clear and proper description of the changes so I can understand the improvements and the impact of your contribution.
 
 
