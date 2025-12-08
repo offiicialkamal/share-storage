@@ -85,7 +85,7 @@ the tool usage multiple third party libraries so such as -
 - If you're a developer who wants to contribute or improve the project, remember: **“small steps make a big difference.”** I truly appreciate any kind of contribution you can offer
 
 > [!INFO]
-> i'm always expecting an proper description about changes to know what improvements/impact made by your contribution.
+> I always appreciate a clear and proper description of the changes so I can understand the improvements and the impact of your contribution.
 
 
 
